@@ -7,13 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomepageController extends AbstractController
+class Connexion extends AbstractController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/connexion", name="connexion")
      */
     public function index()
     {
-        return $this->render('homepage.html.twig', ['title' => 'Bienvenue sur la page d\'acceuil']);
+        return $this->render('connexion.html.twig',['title' => 'Connexion']);
     }
 }
