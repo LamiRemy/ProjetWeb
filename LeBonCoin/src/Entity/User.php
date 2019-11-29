@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
