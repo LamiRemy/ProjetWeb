@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Mime\Encoder\EncoderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InscriptionType extends AbstractType
