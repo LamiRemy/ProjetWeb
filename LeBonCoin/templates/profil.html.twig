@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bienvenue dans votre profil {{ Firstname }} {{ Lastname }}</h1>
+    <h2>Vos informations personnelles: </h2>
+    <h3>Prénom :</h3>
+    {{ Firstname }}
+    <br>
+    <h3>Nom :</h3>
+    {{ Lastname }}
+    <br>
+    <h3>Pseudo :</h3>
+    {{ Pseudo }}
+    <br>
+    <h3>Adresse mail :</h3>
+    {{ Mail }}
+    <br>
+    <h3>Numéro de téléphone :</h3>
+    {{ Phone }}
+    <br>
+    <br>
+    <a href="{{ path('modifprofil') }}">Modifier mes informations</a>
+    <br>
+    <br>
+    <p>Modifier mon mot de passe</p>
+    <br>
+    <br>
+    <a href="{{ path('homepage') }}">Retour</a>
+{% endblock %}

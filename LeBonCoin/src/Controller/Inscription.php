@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Form\InscriptionType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Article;
@@ -15,6 +16,13 @@ use App\Entity\User;
 
 class Inscription extends AbstractController
 {
+    private $UserRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->UserRepository = $userRepository;
+    }
+
     /**
      * @Route("/inscription", name="inscription")
      */
@@ -23,14 +31,23 @@ class Inscription extends AbstractController
         $form = $this->createForm(InscriptionType::class);
         $form -> handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $User = $form->getData();
-            $User -> setPassword($encoder->encodePassword($User , $User -> getPassword()));
-            $em->persist($User);
-            $em->flush();
 
-            return $this->redirectToRoute('inscriptionfaite');
+            $identifiant = $form->get('pseudo')->getData();
+
+            $result = $this->UserRepository->inscription($identifiant);
+
+            if (empty($result)) {
+                //$User -> setPassword($encoder->encodePassword($User , $User -> getPassword()));
+                $em->persist($User);
+                $em->flush();
+                return $this->redirectToRoute('inscriptionfaite');
+            }
+            else
+            {
+                return $this->render('inscriptionerror.html.twig', ['title' => 'Inscription', 'form' => $form->createView(), 'message' => 'Le pseudo est déjà utilisé']);
+            }
         }
 
         return $this->render('inscription.html.twig',['title' => 'Inscription', 'form' => $form -> createView()]);
@@ -41,6 +58,6 @@ class Inscription extends AbstractController
      */
     public function InscriptionEnd()
     {
-        return $this->render('inscriptionfaite.html.twig',['title' => 'Vous etes desormais inscris']);
+        return $this->render('inscriptionfaite.html.twig',[]);
     }
 }

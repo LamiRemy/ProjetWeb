@@ -1,16 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ title }}</h1>
+    <h1>Inscription</h1>
     <br>
 
     {{ form_start(form) }}
-         {{ form_widget(form) }}
-            <button type="submit" class="btn btn-primary">Valider</button>
+        {{ form_label(form.firstname) }}
+        <br>
+        {{ form_widget(form.firstname) }}
+        <br>
+        <br>
+        {{ form_label(form.lastname) }}
+        <br>
+        {{ form_widget(form.lastname) }}
+        <br>
+        <br>
+        {{ form_label(form.pseudo) }}
+        <br>
+        {{ form_widget(form.pseudo) }}
+        <br>
+        <br>
+        {{ form_label(form.password.first) }}
+        <br>
+        {{ form_widget(form.password.first) }}
+        <br>
+        <br>
+        {{ form_label(form.password.second) }}
+        <br>
+        {{ form_widget(form.password.second) }}
+        <br>
+        <br>
+        {{ form_label(form.mail) }}
+        <br>
+        {{ form_widget(form.mail) }}
+        <br>
+        <br>
+        {{ form_label(form.phone) }}
+        <br>
+        {{ form_widget(form.phone) }}
+        <br>
+        <p style="color: darkred"> {{ form_errors(form.password.first) }} </p>
+        {{ form_errors(form) }}
+        <button type="submit" class="btn btn-primary">Créer un compte</button>
     {{ form_end(form) }}
 
-    <a href="{{ path('connexion') }}">Je veux me connecter</a>
     <br>
-    <br>
-    <a href="{{ path('homepage') }}">Retournez à la page d'acceuil</a>
+    <a href="{{ path('connexion') }}">Retour</a>
 {% endblock %}

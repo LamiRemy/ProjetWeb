@@ -1,7 +1,10 @@
 <?php
 
-
 namespace App\Controller;
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 use App\Entity\User;
 use App\Form\ConnexionType;
@@ -22,7 +25,7 @@ class Connexion extends AbstractController
     }
 
     /**
-     * @Route("/connexion", name="connexion")
+     * @Route("/", name="connexion")
      */
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -33,42 +36,35 @@ class Connexion extends AbstractController
         {
             $identifiant = $form -> get('pseudo') -> getData();
             $mdp = $form -> get('password') -> getData();
-            $User = $form -> getData();
 
-            $pass = $encoder->encodePassword($User , $mdp);
+            //$User = $form -> getData();
 
-            echo $pass;
+            //$pass = $encoder->encodePassword($User , $mdp);
 
-            $result = $this->UserRepository->connexion($identifiant, $pass);
+            $result = $this->UserRepository->connexion($identifiant, $mdp);
 
-            /*if(empty($result))
+            if(empty($result))
             {
-                echo "nop";
+                return $this->render('connexionerror.html.twig',['form' => $form -> createView(), 'message' => 'Mot de passe ou pseudo incorrecte']);
             }
             else
             {
-                echo "yep";
-            }
+                $firstname = $this->UserRepository->getFirstname($identifiant);
+                $lastname = $this->UserRepository->getLastname($identifiant);
+                $mail = $this->UserRepository->getMail($identifiant);
+                $phone = $this->UserRepository->getPhone($identifiant);
+                $id = $this->UserRepository->getId($identifiant);
 
-            /*if($result != 0)
-            {
-                $_SESSION['id'] = $result -> getId();
-                return $this->redirectToRoute('connexionfaite');
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['mail'] = $mail;
+                $_SESSION['phone'] = $phone;
+                $_SESSION['pseudo'] = $identifiant;
+                $_SESSION['id'] = $id;
+                return $this->redirectToRoute('homepage');
             }
-            else
-            {
-                throw $this->createNotFoundException('Aucun compte avec le pseudo '. $identifiant);
-            }*/
         }
 
-        return $this->render('connexion.html.twig',['title' => 'Connexion', 'form' => $form -> createView()]);
-    }
-
-    /**
-     * @Route("/connexionfaite", name="connexionfaite")
-     */
-    public function ConnexionEnd()
-    {
-        return $this->render('connexionfaite.html.twig',['title' => 'Vous etes desormais connecté']);
+        return $this->render('connexion.html.twig',['form' => $form -> createView()]);
     }
 }
