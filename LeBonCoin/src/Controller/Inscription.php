@@ -46,11 +46,11 @@ class Inscription extends AbstractController
             }
             else
             {
-                return $this->render('inscriptionerror.html.twig', ['title' => 'Inscription', 'form' => $form->createView(), 'message' => 'Le pseudo est déjà utilisé']);
+                return $this->render('inscriptionerror.html.twig', ['form' => $form->createView(), 'message' => 'Le pseudo est déjà utilisé']);
             }
         }
 
-        return $this->render('inscription.html.twig',['title' => 'Inscription', 'form' => $form -> createView()]);
+        return $this->render('inscription.html.twig',['form' => $form -> createView()]);
     }
 
     /**
