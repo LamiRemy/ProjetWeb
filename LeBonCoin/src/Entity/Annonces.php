@@ -66,6 +66,7 @@ class Annonces
 
     public function __construct()
     {
+        $this->date = new \DateTime('now');
         $this->images = new ArrayCollection();
     }
 
