@@ -7,6 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+use App\Entity\User;
 use App\Form\AnnonceType;
 use App\Form\InscriptionType;
 use App\Repository\AnnoncesRepository;
@@ -32,7 +33,11 @@ class Homepage extends AbstractController
      */
     public function index()
     {
-        return $this->render('homepage.html.twig', ['Pseudo' => $_SESSION['pseudo']]);
+        $repository = $this -> getDoctrine() -> getRepository(Annonces::class);
+
+        $Listeannonces = $repository -> findAll(['date' => 'ASC']);
+
+        return $this->render('homepage.html.twig', ['Pseudo' => $_SESSION['pseudo'], 'Listeannonces' => $Listeannonces]);
     }
 
     /**
@@ -52,24 +57,27 @@ class Homepage extends AbstractController
         $form = $this->createForm(AnnonceType::class);
         $form -> handleRequest($request);
 
+        $User = $this->getDoctrine() -> getRepository(User::class) -> find($_SESSION['id']);
+
         if ($form->isSubmitted() && $form->isValid())
         {
             $Annonce = $form ->getData();
 
-            //$Annonce -> setName($form -> get('name') -> getData());
-             //$Annonce->setDate(new \DateTime('now'));
-           // $Annonce -> setDescription($form -> get('description') -> getData());
-          //  $Annonce -> setLocation($form -> get('location') -> getData());
-           // $Annonce -> setPrix($form -> get('prix') -> getData());
-          //  $Annonce -> setCategory($form -> get('category') -> getData());
-          //  $Annonce -> setState($form -> get('state') -> getData());
-            $Annonce -> setUserId($_SESSION['id']);
+            $Annonce -> setUserId($User);
 
             $em->persist($Annonce);
             $em->flush();
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('ajouterannoncefaite');
 
         }
         return $this->render('ajouterannonce.html.twig',['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/ajouterannoncefaite", name="ajouterannoncefaite")
+     */
+    public function ajouterannoncefaite()
+    {
+        return $this->render('ajouterannoncefaite.html.twig');
     }
 }

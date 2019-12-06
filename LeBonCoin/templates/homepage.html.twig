@@ -4,6 +4,13 @@
     <h1> Bonjour, {{ Pseudo }}</h1>
     <br>
     <br>
+    <ul>
+        {% for annonce in Listeannonces %}
+            <li>{{ annonce.name }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <br>
     <a href="{{ path('ajouterannonce') }}">Créer une nouvelle annonce</a>
     <br>
     <br>
