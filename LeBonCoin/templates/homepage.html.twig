@@ -2,11 +2,16 @@
 
 {% block body %}
     <h1> Bonjour, {{ Pseudo }}</h1>
-    <br>
-    <br>
+    <h2>Les dernieres annonces :</h2>
+    <h4>| Nom | Prix | Categorie |</h4>
     <ul>
         {% for annonce in Listeannonces %}
-            <li>{{ annonce.name }}</li>
+            <li>
+                {{ annonce.name }}
+                {{ annonce.prix }} €
+                {{ annonce.category }}
+                <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
+            </li>
         {% endfor %}
     </ul>
     <br>

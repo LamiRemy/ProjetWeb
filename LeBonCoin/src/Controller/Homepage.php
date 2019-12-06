@@ -49,35 +49,5 @@ class Homepage extends AbstractController
         return $this -> render('deconnexion.html.twig');
     }
 
-    /**
-     * @Route("/ajouterannonce", name="ajouterannonce")
-     */
-    public function ajouteAnnonce(Request $request, EntityManagerInterface $em)
-    {
-        $form = $this->createForm(AnnonceType::class);
-        $form -> handleRequest($request);
 
-        $User = $this->getDoctrine() -> getRepository(User::class) -> find($_SESSION['id']);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $Annonce = $form ->getData();
-
-            $Annonce -> setUserId($User);
-
-            $em->persist($Annonce);
-            $em->flush();
-            return $this->redirectToRoute('ajouterannoncefaite');
-
-        }
-        return $this->render('ajouterannonce.html.twig',['form' => $form->createView()]);
-    }
-
-    /**
-     * @Route("/ajouterannoncefaite", name="ajouterannoncefaite")
-     */
-    public function ajouterannoncefaite()
-    {
-        return $this->render('ajouterannoncefaite.html.twig');
-    }
 }
