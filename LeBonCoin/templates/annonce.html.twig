@@ -37,7 +37,7 @@
         <p><a href="{{ path('modifannonce', { id: ID }) }}">Modifier l'annonce</a></p>
         <p><a href="{{ path('supprimerannonce', { id: ID }) }}">Supprimer l'annonce</a></p>
     {% else %}
-        <p>Acheter</p>
+        <p><a href="{{ path('acheter', { id: ID }) }}">Acheter</a></p>
     {% endif %}
     <a href="{{ path('homepage') }}">Acceuil</a>
 {% endblock %}

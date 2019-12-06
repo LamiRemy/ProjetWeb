@@ -45,6 +45,8 @@ class Recherche extends AbstractController
 
         $repository = $this -> getDoctrine() -> getRepository(Annonces::class);
 
+        $Listeannonces = $repository -> findAll();
+
         if ($form->isSubmitted() && $form->isValid())
         {
             if(empty($word) && empty($prixmin) && empty($prixmax) && empty($category))
@@ -115,6 +117,6 @@ class Recherche extends AbstractController
         }
 
 
-        return $this->render('recherche.html.twig',['form' => $form->createView()]);
+        return $this->render('rechercheresult.html.twig',['form' => $form->createView(),'Listeannonces' => $Listeannonces]);
     }
 }

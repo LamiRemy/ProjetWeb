@@ -173,4 +173,14 @@ class Annonce extends AbstractController
 
         return $this -> render('supprimerannoncefait.html.twig');
     }
+
+    /**
+     * @Route("/acheter{id}", name="acheter")
+     */
+    public function acheter($id, EntityManagerInterface $em)
+    {
+        $Annonce = $em -> getRepository(Annonces::class) -> find($id);
+
+        return $this -> render('achat.html.twig',['Name' => $Annonce->getName()]);
+    }
 }
