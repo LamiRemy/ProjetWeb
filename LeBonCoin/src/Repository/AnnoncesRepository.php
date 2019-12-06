@@ -19,6 +19,177 @@ class AnnoncesRepository extends ServiceEntityRepository
         parent::__construct($registry, Annonces::class);
     }
 
+    public function getByWord($word)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->setParameter('word','%'.$word.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMin($prixmin)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix >= :prix')
+            ->setParameter('prix',$prixmin)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMax($prixmax)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix <= :prix')
+            ->setParameter('prix',$prixmax)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByCategory($category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.category = :cat')
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByWordandMin($word,$prixmin)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.prix >= :prix')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('prix',$prixmin)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByWordandMax($word,$prixmax)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.prix <= :prix')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('prix',$prixmax)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByWordandCat($word,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.category = :cat')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMinAndMax($prixmin,$prixmax)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix >= :prixmin')
+            ->andWhere('a.prix <= :prixmax')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('prixmax',$prixmax)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMinAndCat($prixmin,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix >= :prixmin')
+            ->andWhere('a.category = :cat')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMaxAndCat($prixmax,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix <= :prixmax')
+            ->andWhere('a.category = :cat')
+            ->setParameter('prixmax',$prixmax)
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getByNameMinandMax($word,$prixmin,$prixmax)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.prix >= :prixmin')
+            ->andWhere('a.prix <= :prixmax')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('prixmax',$prixmax)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getByNameMinandCat($word,$prixmin,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.prix >= :prixmin')
+            ->andWhere('a.category = :cat')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByNameMaxandCat($word,$prixmax,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.name LIKE :word')
+            ->andWhere('a.prix <= :prixmax')
+            ->andWhere('a.category = :cat')
+            ->setParameter('word','%'.$word.'%')
+            ->setParameter('prixmax',$prixmax)
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByMinMaxandCat($prixmin,$prixmax,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix >= :prixmin')
+            ->andWhere('a.prix <= :prixmax')
+            ->andWhere('a.category = :cat')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('prixmax',$prixmax)
+            ->setParameter('cat',$category)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function getByAll($word,$prixmin,$prixmax,$category)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.prix >= :prixmin')
+            ->andWhere('a.name LIKE :word')
+            ->andWhere('a.prix <= :prixmax')
+            ->andWhere('a.category = :cat')
+            ->setParameter('prixmin',$prixmin)
+            ->setParameter('prixmax',$prixmax)
+            ->setParameter('cat',$category)
+            ->setParameter('word','%'.$word.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Annonces[] Returns an array of Annonces objects
     //  */

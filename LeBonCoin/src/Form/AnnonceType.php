@@ -17,9 +17,9 @@ class AnnonceType extends AbstractType
             ->add('name',NULL,['label' => 'Titre de l\'annonce'])
             ->add('description',NULL,['label' => 'Décrivez votre annonce'])
             ->add('prix',NumberType::class,['label' => 'Prix de vente', 'invalid_message'  =>'Le prix doit être un nombre'])
-            ->add('state',ChoiceType::class,['choices' => ['Mauvais état' => 'Mauvais état','Bon état' => 'Bon état','Trés bon état' => 'Trés bon état','Neuf' => 'Neuf']])
+            ->add('state',ChoiceType::class,['choices' => ['Mauvais état' => 'Mauvais état','Bon état' => 'Bon état','Trés bon état' => 'Trés bon état','Neuf' => 'Neuf'],'label' => 'Etat du produit'])
             ->add('location',NULL,['label' => 'Adresse de vente'])
-            ->add('category',ChoiceType::class,['choices' => ['Meubles' => 'Meubles','Jeux Video' => 'Jeux Video','Electromenager' => 'Electromenager','Véhicule' => 'Véhicule']])
+            ->add('category',ChoiceType::class,['choices' => ['Meubles' => 'Meubles','Jeux Video' => 'Jeux Video','Electromenager' => 'Electromenager','Véhicule' => 'Véhicule'],'label' => 'Categorie du produit'])
         ;
     }
 
