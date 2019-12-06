@@ -129,4 +129,16 @@ class Profil extends AbstractController
 
         return $this->render('modifmdp.html.twig',['form' => $form -> createView()]);
     }
+
+    /**
+     *@Route("/voirannonce", name="voirannonce")
+     */
+    public function voirannonce(EntityManagerInterface $em)
+    {
+        $User = $em -> getRepository(User::class) -> find($_SESSION['id']);
+
+        $listeannonces = $User -> getAnnonces();
+
+        return $this -> render('annoncesprofil.html.twig',['listeannonces' => $listeannonces]);
+    }
 }

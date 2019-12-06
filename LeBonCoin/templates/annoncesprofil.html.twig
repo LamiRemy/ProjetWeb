@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Vos annonces :</h1>
+    {% if listeannonces is empty %}
+        <p>Vous n'avez posté aucune annonces avec ce compte</p>
+    {% else %}
+        {% for annonce in listeannonces %}
+            <li>
+                {{ annonce.name }}
+                {{ annonce.prix }} €
+                {{ annonce.category }}
+                <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
+            </li>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <br>
+    <a href="{{ path('profil') }}">Retour</a>
+{% endblock %}

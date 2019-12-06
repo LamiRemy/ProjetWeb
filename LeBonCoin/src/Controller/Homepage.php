@@ -35,7 +35,7 @@ class Homepage extends AbstractController
     {
         $repository = $this -> getDoctrine() -> getRepository(Annonces::class);
 
-        $Listeannonces = $repository -> findAll(['date' => 'ASC']);
+        $Listeannonces = $repository -> findBy(array(),array('date' => 'desc'),5);
 
         return $this->render('homepage.html.twig', ['Pseudo' => $_SESSION['pseudo'], 'Listeannonces' => $Listeannonces]);
     }
@@ -48,6 +48,4 @@ class Homepage extends AbstractController
         session_destroy();
         return $this -> render('deconnexion.html.twig');
     }
-
-
 }
