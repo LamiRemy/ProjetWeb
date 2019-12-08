@@ -1,29 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier le mot de passe</h1>
-    <br>
+    <div class="form">
+        <h1>Modifier le mot de passe</h1>
+        <br>
 
-    {{ form_start(form) }}
-    {{ form_label(form.password) }}
-    <br>
-    {{ form_widget(form.password) }}
-    <br>
-    <br>
-    {{ form_label(form.pseudo.first) }}
-    <br>
-    {{ form_widget(form.pseudo.first) }}
-    <br>
-    <br>
-    {{ form_label(form.pseudo.second) }}
-    <br>
-    {{ form_widget(form.pseudo.second) }}
-    <br>
-    <p style="color: darkred"> {{ form_errors(form.pseudo.first) }} </p>
-    {{ form_errors(form) }}
-    <button type="submit" class="btn btn-primary">Valider</button>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+        {{ form_label(form.password) }}
+        <br>
+        {{ form_widget(form.password) }}
+        <br>
+        <br>
+        {{ form_label(form.pseudo.first) }}
+        <br>
+        {{ form_widget(form.pseudo.first) }}
+        <br>
+        <br>
+        {{ form_label(form.pseudo.second) }}
+        <br>
+        {{ form_widget(form.pseudo.second) }}
+        <br>
+        <p style="color: darkred"> {{ form_errors(form.pseudo.first) }} </p>
+        {{ form_errors(form) }}
+        <button type="submit" class="btn btn-primary mon-bouton">Valider</button>
+        {{ form_end(form) }}
 
-    <br>
-    <a href="{{ path('profil') }}">Annuler</a>
+        <br>
+        <a href="{{ path('profil') }}">Annuler</a>
+    </div>
 {% endblock %}

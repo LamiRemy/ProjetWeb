@@ -1,45 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier les informations souhaité</h1>
-    <br>
+    <div class="form">
+        <h1>Modifier les informations souhaité</h1>
+        <br>
 
-    {{ form_start(form) }}
-    {{ form_label(form.name) }}
-    <br>
-    {{ form_widget(form.name) }}
-    <br>
-    <br>
-    {{ form_label(form.description) }}
-    <br>
-    {{ form_widget(form.description) }}
-    <br>
-    <br>
-    {{ form_label(form.prix) }}
-    <br>
-    {{ form_widget(form.prix) }}
-    <br>
-    <br>
-    {{ form_label(form.state) }}
-    <br>
-    {{ form_widget(form.state) }}
-    <br>
-    <br>
-    {{ form_label(form.location) }}
-    <br>
-    {{ form_widget(form.location) }}
-    <br>
-    <br>
-    {{ form_label(form.category) }}
-    <br>
-    {{ form_widget(form.category) }}
-    <br>
-    <br>
-    {{form_errors(form.prix)}}
-    {{ form_errors(form) }}
-    <button type="submit" class="btn btn-primary">Valider les modifications</button>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+        {{ form_label(form.name) }}
+        <br>
+        {{ form_widget(form.name) }}
+        <br>
+        <br>
+        {{ form_label(form.description) }}
+        <br>
+        {{ form_widget(form.description) }}
+        <br>
+        <br>
+        {{ form_label(form.prix) }}
+        <br>
+        {{ form_widget(form.prix) }}
+        <br>
+        <br>
+        {{ form_label(form.state) }}
+        <br>
+        {{ form_widget(form.state) }}
+        <br>
+        <br>
+        {{ form_label(form.location) }}
+        <br>
+        {{ form_widget(form.location) }}
+        <br>
+        <br>
+        {{ form_label(form.category) }}
+        <br>
+        {{ form_widget(form.category) }}
+        <br>
+        <br>
+        {{form_errors(form.prix)}}
+        {{ form_errors(form) }}
+        <button type="submit" class="btn btn-primary mon-bouton">Valider les modifications</button>
+        {{ form_end(form) }}
 
-    <br>
-    <a href="{{ path('annonce', { id : ID }) }}">Annuler</a>
+        <br>
+        <a href="{{ path('annonce', { id : ID }) }}">Annuler</a>
+    </div>
 {% endblock %}

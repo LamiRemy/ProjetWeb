@@ -1,39 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier les informations souhaités</h1>
-    <br>
+    <div class="form">
+        <h1>Modifier les informations souhaités</h1>
+        <br>
 
-    {{ form_start(form) }}
-    {{ form_label(form.firstname) }}
-    <br>
-    {{ form_widget(form.firstname) }}
-    <br>
-    <br>
-    {{ form_label(form.lastname) }}
-    <br>
-    {{ form_widget(form.lastname) }}
-    <br>
-    <br>
-    {{ form_label(form.pseudo) }}
-    <br>
-    {{ form_widget(form.pseudo) }}
-    <br>
-    <br>
-    {{ form_label(form.mail) }}
-    <br>
-    {{ form_widget(form.mail) }}
-    <br>
-    <br>
-    {{ form_label(form.phone) }}
-    <br>
-    {{ form_widget(form.phone) }}
-    <br>
-    <br>
-    {{ form_errors(form) }}
-    <button type="submit" class="btn btn-primary">Valider les modifications</button>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+        {{ form_label(form.firstname) }}
+        <br>
+        {{ form_widget(form.firstname) }}
+        <br>
+        <br>
+        {{ form_label(form.lastname) }}
+        <br>
+        {{ form_widget(form.lastname) }}
+        <br>
+        <br>
+        {{ form_label(form.pseudo) }}
+        <br>
+        {{ form_widget(form.pseudo) }}
+        <br>
+        <br>
+        {{ form_label(form.mail) }}
+        <br>
+        {{ form_widget(form.mail) }}
+        <br>
+        <br>
+        {{ form_label(form.phone) }}
+        <br>
+        {{ form_widget(form.phone) }}
+        <br>
+        <br>
+        {{ form_errors(form) }}
+        <button type="submit" class="btn btn-primary mon-bouton">Valider les modifications</button>
+        {{ form_end(form) }}
 
-    <br>
-    <a href="{{ path('profil') }}">Annuler</a>
+        <br>
+        <a href="{{ path('profil') }}">Annuler</a>
+    </div>
 {% endblock %}

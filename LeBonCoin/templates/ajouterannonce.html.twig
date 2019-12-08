@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="form">
     <h1>Créer une annonce</h1>
     <br>
 
@@ -37,9 +38,10 @@
         <br>
         {{ form_errors(form.prix) }}
         {{ form_errors(form) }}
-        <button type="submit" class="btn btn-primary">Créer</button>
+        <button type="submit" class="btn btn-primary mon-bouton">Créer</button>
     {{ form_end(form) }}
 
     <br>
     <a href="{{ path('homepage') }}">Retour</a>
+    </div>
 {% endblock %}

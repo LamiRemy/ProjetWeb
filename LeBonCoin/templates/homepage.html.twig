@@ -1,29 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1> Bonjour, {{ Pseudo }}</h1>
-    <h2>Les dernieres annonces :</h2>
-    <h4>| Nom | Prix | Categorie |</h4>
-    <ul>
-        {% for annonce in Listeannonces %}
-            <li>
-                {{ annonce.name }}
-                {{ annonce.prix }} €
-                {{ annonce.category }}
-                <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <br>
-    <br>
-    <a href="{{ path('recherche') }}">Rechercher</a>
-    <br>
-    <br>
-    <a href="{{ path('ajouterannonce') }}">Créer une nouvelle annonce</a>
-    <br>
-    <br>
-    <a href="{{ path('profil') }}">Mon profil</a>
-    <br>
-    <br>
-    <a href="{{ path('deconnexion') }}">Se déconnecter</a>
+    <div class="decalage2">
+        <h1> Bonjour, {{ Pseudo }}</h1>
+            <div class="decalage2">
+                <h2>Les dernieres annonces :</h2>
+                <ul>
+                    {% for annonce in Listeannonces %}
+                            <div class="annonce">
+                                {{ annonce.name }}
+                                <br>
+                                {{ annonce.prix }} €
+                                <br>
+                                Categorie : {{ annonce.category }}
+                                <div class="voirPlus">
+                                    <a href="{{ path('annonce', { id: annonce.id}) }}">Voir plus</a>
+                                </div>
+                            </div>
+                    {% endfor %}
+                </ul>
+                <br>
+                <br>
+                <a href="{{ path('recherche') }}">Rechercher</a>
+                <br>
+                <br>
+                <a href="{{ path('ajouterannonce') }}">Créer une nouvelle annonce</a>
+                <br>
+                <br>
+                <a href="{{ path('profil') }}">Mon profil</a>
+                <br>
+                <br>
+                <a href="{{ path('deconnexion') }}">Se déconnecter</a>
+
+           </div>
+    </div>
 {% endblock %}

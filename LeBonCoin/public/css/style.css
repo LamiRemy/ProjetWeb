@@ -1,3 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
 body  {
-    background: dimgrey;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+}
+
+header{
+    background: white;
+
+}
+
+.dégradé{
+    background-image: linear-gradient(white, grey);
+}
+
+footer{
+    padding-top: 5%;
+    background: grey
+    bottom;
+}
+.form{
+    padding-top: 5%;
+    padding-left: 10%;
+    width : 90%;
+}
+
+.traitOrange{
+    background: orange;
+    height: 3px;
+}
+a{
+    color: black;
+    text-decoration: underline ;
+    text-decoration-color: orange;
+}
+
+.profil{
+    padding-left: 10%;
+}
+h3{
+    text-decoration: underline;
+}
+
+.mon-bouton {
+    user-appearance: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    color: black;
+    background: orange;
+}
+
+.decalage5{
+   padding-left: 5%;
+}
+
+.decalage2{
+    padding-left: 2.5%;
+}
+.annonce{
+    border-width:2px;
+    border-style: double;
+    border-color:orange;
+    margin-left: 3%;
+    padding-left: 2%;
+    width: 25%;
+    margin-top: 3%;
+
+}
+.voirPlus{
+    text-align: right;
+    padding-bottom: 2%;
+    padding-right: 2%;
 }

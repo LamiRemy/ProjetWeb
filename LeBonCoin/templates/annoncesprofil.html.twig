@@ -7,10 +7,12 @@
     {% else %}
         {% for annonce in listeannonces %}
             <li>
-                {{ annonce.name }}
-                {{ annonce.prix }} €
-                {{ annonce.category }}
-                <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
+                <div class="annonce">
+                    {{ annonce.name }}
+                    {{ annonce.prix }} €
+                    {{ annonce.category }}
+                    <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
+                </div>
             </li>
         {% endfor %}
     {% endif %}

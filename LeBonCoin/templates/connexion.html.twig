@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="form">
     <h1>Connexion</h1>
     <br>
 
@@ -13,15 +14,16 @@
         {{ form_label(form.password) }}
         <br>
         {{ form_widget(form.password) }}
-
         <br>
         <br>
         {{ form_errors(form) }}
         <br>
-        <button type="submit" class="btn btn-primary">Se connecter</button>
+
+        <button type="submit" class="btn btn-primary mon-bouton">Se connecter</button>
     {{ form_end(form) }}
 
     <br>
     <p>Pas de compte ?</p>
     <a href="{{ path('inscription') }}">Créer un compte</a>
+    </div>
 {% endblock %}

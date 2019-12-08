@@ -1,48 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Rechercher</h1>
-    <br>
+   <div class="form">
+        <h1>Rechercher</h1>
+        <br>
 
-    {{ form_start(form) }}
-        {{ form_label(form.word) }}
-        <br>
-        {{ form_widget(form.word) }}
-        <br>
-        <br>
-        {{ form_label(form.prixmin) }}
-        <br>
-        {{ form_widget(form.prixmin) }}
-        <br>
-        <br>
-        {{ form_label(form.prixmax) }}
-        <br>
-        {{ form_widget(form.prixmax) }}
-        <br>
-        <br>
-        {{ form_label(form.category) }}
-        <br>
-        {{ form_widget(form.category) }}
-        <br>
-        <br>
-        {{ form_errors(form) }}
-        <button type="submit" class="btn btn-primary">Rechercher</button>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+            {{ form_label(form.word) }}
+            <br>
+            {{ form_widget(form.word) }}
+            <br>
+            <br>
+            {{ form_label(form.prixmin) }}
+            <br>
+            {{ form_widget(form.prixmin) }}
+            <br>
+            <br>
+            {{ form_label(form.prixmax) }}
+            <br>
+            {{ form_widget(form.prixmax) }}
+            <br>
+            <br>
+            {{ form_label(form.category) }}
+            <br>
+            {{ form_widget(form.category) }}
+            <br>
+            <br>
+            {{ form_errors(form) }}
+            <button type="submit" class="btn btn-primary mon-bouton">Rechercher</button>
+        {{ form_end(form) }}
+   </div>
     <br>
-    <h1> Résultat :</h1>
-    {% if Listeannonces is empty %}
-        <p>Aucune annonce correspondante trouvée</p>
-    {% else %}
-        {% for annonce in Listeannonces %}
-            <li>
-                {{ annonce.name }}
-                {{ annonce.prix }} €
-                {{ annonce.category }}
-                <a href="{{ path('annonce', { id: annonce.id}) }}">Afficher</a>
-            </li>
-        {% endfor %}
-    {% endif %}
-    <br>
-    <br>
-    <a href="{{ path('homepage') }}">Retour</a>
+    <div class="decalage5">
+        <h1> Résultat :</h1>
+        {% if Listeannonces is empty %}
+            <p>Aucune annonce correspondante trouvée</p>
+        {% else %}
+            {% for annonce in Listeannonces %}
+                <div class="annonce">
+                    {{ annonce.name }}
+                    <br>
+                    {{ annonce.prix }} €
+                    <br>
+                    Categorie : {{ annonce.category }}
+                    <div class="voirPlus">
+                        <a href="{{ path('annonce', { id: annonce.id}) }}">Voir plus</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <br>
+        <br>
+        <a href="{{ path('homepage') }}">Retour</a>
+    </div>
 {% endblock %}

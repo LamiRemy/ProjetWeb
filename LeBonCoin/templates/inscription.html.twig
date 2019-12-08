@@ -1,49 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Inscription</h1>
-    <br>
+    <div class="form">
+        <h1>Inscription</h1>
+        <br>
 
-    {{ form_start(form) }}
-        {{ form_label(form.firstname) }}
-        <br>
-        {{ form_widget(form.firstname) }}
-        <br>
-        <br>
-        {{ form_label(form.lastname) }}
-        <br>
-        {{ form_widget(form.lastname) }}
-        <br>
-        <br>
-        {{ form_label(form.pseudo) }}
-        <br>
-        {{ form_widget(form.pseudo) }}
-        <br>
-        <br>
-        {{ form_label(form.password.first) }}
-        <br>
-        {{ form_widget(form.password.first) }}
-        <br>
-        <br>
-        {{ form_label(form.password.second) }}
-        <br>
-        {{ form_widget(form.password.second) }}
-        <br>
-        <br>
-        {{ form_label(form.mail) }}
-        <br>
-        {{ form_widget(form.mail) }}
-        <br>
-        <br>
-        {{ form_label(form.phone) }}
-        <br>
-        {{ form_widget(form.phone) }}
-        <br>
-        <p style="color: darkred"> {{ form_errors(form.password.first) }} </p>
-        {{ form_errors(form) }}
-        <button type="submit" class="btn btn-primary">Créer un compte</button>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+            {{ form_label(form.firstname) }}
+            <br>
+            {{ form_widget(form.firstname) }}
+            <br>
+            <br>
+            {{ form_label(form.lastname) }}
+            <br>
+            {{ form_widget(form.lastname) }}
+            <br>
+            <br>
+            {{ form_label(form.pseudo) }}
+            <br>
+            {{ form_widget(form.pseudo) }}
+            <br>
+            <br>
+            {{ form_label(form.password.first) }}
+            <br>
+            {{ form_widget(form.password.first) }}
+            <br>
+            <br>
+            {{ form_label(form.password.second) }}
+            <br>
+            {{ form_widget(form.password.second) }}
+            <br>
+            <br>
+            {{ form_label(form.mail) }}
+            <br>
+            {{ form_widget(form.mail) }}
+            <br>
+            <br>
+            {{ form_label(form.phone) }}
+            <br>
+            {{ form_widget(form.phone) }}
+            <br>
+            <p style="color: darkred"> {{ form_errors(form.password.first) }} </p>
+            {{ form_errors(form) }}
+            <button type="submit" class="btn btn-primary">Créer un compte</button>
+        {{ form_end(form) }}
 
-    <br>
-    <a href="{{ path('connexion') }}">Retour</a>
+        <br>
+        <a href="{{ path('connexion') }}">Retour</a>
+    </div>
 {% endblock %}

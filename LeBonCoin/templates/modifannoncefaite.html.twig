@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="form">
     <h1>Modifier les informations souhaité</h1>
     <br>
 
@@ -36,9 +37,10 @@
     <br>
     <p style="color: darkblue"> {{ message }} </p>
     {{ form_errors(form) }}
-    <button type="submit" class="btn btn-primary">Valider les modifications</button>
+    <button type="submit" class="btn btn-primary mon-bouton">Valider les modifications</button>
     {{ form_end(form) }}
 
     <br>
     <a href="{{ path('annonce', { id : ID }) }}">Annuler</a>
+    </div>
 {% endblock %}
