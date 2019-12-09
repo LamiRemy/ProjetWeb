@@ -43,9 +43,10 @@ class Homepage extends AbstractController
     /**
      * @Route("/deconnexion", name="deconnexion")
      */
-    public function deconnexion()
+    public function deconnexion(Request $request)
     {
         session_destroy();
+        $request->getSession()->clear();
         return $this -> render('deconnexion.html.twig');
     }
 }
