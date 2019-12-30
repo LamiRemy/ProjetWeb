@@ -1,6 +1,5 @@
 # ProjetWeb
-
-Le but de ce projet été de réaliser le site Le Bon Coin a l'aide du frameworks Symfony.
+Le but de ce projet était de réaliser le site Le Bon Coin à l'aide du framework Symfony.
 
 
 ### Projet fait par : 
