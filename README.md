@@ -3,5 +3,5 @@ Le but de ce projet était de réaliser le site Le Bon Coin à l'aide du framewo
 
 
 ### Projet fait par : 
-- [Rémy CRESPE](https://github.com/LamiRemy)
+- [Rémy CRESPE](https://github.com/RemyCrespe)
 - [Cléry CHASSAGNON](https://github.com/Tunderping)
